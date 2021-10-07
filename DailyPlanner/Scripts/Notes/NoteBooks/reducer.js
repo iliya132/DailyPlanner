@@ -13,7 +13,8 @@ import { store } from './store';
 ;
 var initialState = {
     notebooks: [],
-    selectedNotebook: null
+    selectedNotebook: null,
+    selectedNote: null
 };
 export var reducer = createSlice({
     name: "notebooksSlice",
@@ -30,17 +31,28 @@ export var reducer = createSlice({
         },
         selectNotebook: function (state, action) {
             state.selectedNotebook = action.payload;
+            state.selectedNote = state.selectedNotebook.records.length > 0 ? state.selectedNotebook.records[0] : null;
         },
         addNote: function (state, action) {
             state.notebooks.find(function (i) { return i.id == state.selectedNotebook.id; }).records.push(action.payload);
             state.selectedNotebook = state.notebooks.find(function (i) { return i.id == state.selectedNotebook.id; });
+            state.selectedNote = action.payload;
+        },
+        selectNote: function (state, action) {
+            state.selectedNote = action.payload;
+        },
+        saveNoteBody: function (state, action) {
+            state.selectedNote.body = action.payload;
+            state.selectedNotebook.records.find(function (i) { return i.id === state.selectedNote.id; }).body = action.payload;
+            state.notebooks.find(function (i) { return i.id === state.selectedNotebook.id; }).records.find(function (i) { return i.id === state.selectedNote.id; }).body = action.payload;
         }
     }
 });
-export var addNotebook = (_a = reducer.actions, _a.addNotebook), removeNotebook = _a.removeNotebook, selectNotebook = _a.selectNotebook, addNote = _a.addNote;
+export var addNotebook = (_a = reducer.actions, _a.addNotebook), removeNotebook = _a.removeNotebook, selectNotebook = _a.selectNotebook, addNote = _a.addNote, selectNote = _a.selectNote, saveNoteBody = _a.saveNoteBody;
 export default reducer.reducer;
 export var getNotebooks = function (State) { return State.notebooksReducer.notebooks; };
 export var getSelectedNotebook = function (State) { return State.notebooksReducer.selectedNotebook; };
+export var getSelectedNote = function (State) { return State.notebooksReducer.selectedNote; };
 export var addNewNote = function (note) {
     store.dispatch(reducer.actions.addNote(note));
 };

@@ -9,22 +9,25 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import React from 'react';
-import { Notebook } from './Notebook';
-import { addNote, getNotebooks, getSelectedNotebook } from '../reducer';
-import { notebooksSelector, useAppDispatch } from '../hooks';
-import { NewNoteAction } from '../actions';
-import * as core from '../../../Core/PlannerCore';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import React from 'react';
+import * as core from '../../../Core/PlannerCore';
+import { NewNoteAction } from '../actions';
+import { notebooksSelector, useAppDispatch } from '../hooks';
+import { addNote, getNotebooks, getSelectedNote, getSelectedNotebook, saveNoteBody } from '../reducer';
+import { Note } from './Note';
+import { Notebook } from './Notebook';
 export function NotebooksList() {
     var notebooks = notebooksSelector(getNotebooks);
     var selectedNotebook = notebooksSelector(getSelectedNotebook);
+    var selectedNote = notebooksSelector(getSelectedNote);
     var dispatch = useAppDispatch();
     var currentText = '';
     var handleAddNoteClick = function () {
         core.default.modal.askForTextInput("Название заметки", "Укажите название:", function (input) {
-            dispatch(addNote(NewNoteAction(input, $("#NoteBody").val())));
+            dispatch(addNote(NewNoteAction(input, "")));
+            currentText = '';
         }, null);
     };
     return (React.createElement("div", { className: "columns-3 column-span-3" },
@@ -38,9 +41,7 @@ export function NotebooksList() {
             React.createElement("div", { id: "notes-root" },
                 React.createElement("div", { className: "notes-wrapper" },
                     selectedNotebook.records.map(function (i) {
-                        return (React.createElement("div", { className: "note", key: i.id },
-                            React.createElement("h3", null, i.name),
-                            React.createElement("p", null, i.created_at)));
+                        return (React.createElement(Note, { record: i, isSelected: i.id === selectedNote.id, key: i.id }));
                     }),
                     React.createElement("div", { className: "note note-new", onClick: handleAddNoteClick },
                         React.createElement("h3", null, "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043D\u043E\u0432\u0443\u044E \u0437\u0430\u043C\u0435\u0442\u043A\u0443"))))),
@@ -53,8 +54,9 @@ export function NotebooksList() {
                         React.createElement("button", { type: "button", title: "\u0423\u0434\u0430\u043B\u0438\u0442\u044C" },
                             React.createElement("i", { className: "icon trash" }))))),
             React.createElement("div", { className: "editor-textarea" },
-                React.createElement(CKEditor, { editor: ClassicEditor, data: currentText, onChange: function (event, editor) {
+                React.createElement(CKEditor, { editor: ClassicEditor, data: selectedNote ? selectedNote.body : "", onChange: function (event, editor) {
                         currentText = editor.getData();
-                    } })))));
+                    }, disabled: selectedNote ? false : true }),
+                React.createElement("button", { className: "btn btn-primary float-right", disabled: selectedNote ? false : true, type: "button", onClick: function () { return dispatch(saveNoteBody(currentText)); } }, "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C")))));
 }
 //# sourceMappingURL=NotebooksList.js.map

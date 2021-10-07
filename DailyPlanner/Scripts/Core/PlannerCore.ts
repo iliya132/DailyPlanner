@@ -7,7 +7,8 @@
             showCommonModal(header, body, okCallback, cancelCallback, true, true);
         },
         askForTextInput: (header: string, question: string, callback: (string) => void, cancelCallback: any) => {
-            showCommonModal(header, `<label>${question}</label><input id="modalInput" class="text-input" type="text"/>`, ()=>handleInputCallback(callback), cancelCallback, true, true);
+            showCommonModal(header, `<label>${question}</label><input id="modalInput" class="text-input" type="text"/>`, () => handleInputCallback(callback), cancelCallback, true, true);
+            $('#modalInput').focus();
         },
         hideModal: () => {
             hideModalWindow();
@@ -18,7 +19,6 @@
 export default modules;
 
 function showCommonModal(header: string, body: string, onAccept: any = null, onCancel: any = null, showDefaultBtn: boolean = true, showCancelBtn: boolean = false) {
-    console.log('modal!');
     $('#modalHeader').html(header);
     $('#modalContent').html(body);
     if (showDefaultBtn) {

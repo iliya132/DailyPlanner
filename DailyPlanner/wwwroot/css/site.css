@@ -17,66 +17,69 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 a {
-  color: #0077cc;
+    color: #0077cc;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
 }
 
 
@@ -134,6 +137,7 @@ h5 {
     box-shadow: 0px 4px 8px 0px rgba(93, 109, 126, 0.2);
 }
 
+
 .nav-menu {
     float: right;
     margin-right: 35px;
@@ -190,7 +194,7 @@ h5 {
     grid-template-columns: 130px 360px 1fr;
 }
 
-.column-span-3{
+.column-span-3 {
     grid-column-start: 1;
     grid-column-end: 4;
 }
@@ -233,6 +237,10 @@ h5 {
     margin: 0 3px;
 }
 
+.notebook-marker.orange{
+    background-color: orange;
+}
+
 .bg-orange {
     background-color: orange;
 }
@@ -256,7 +264,7 @@ h5 {
 
 .note.note-new {
     text-align: center;
-    cursor:pointer;
+    cursor: pointer;
 }
 
     .note.note-new:hover {
@@ -371,15 +379,13 @@ h5 {
 }
 
 #CommonModal {
-
     margin-left: auto;
     margin-right: auto;
     position: absolute;
     max-width: 50%;
     min-width: 30%;
-    
     max-height: 50%;
-    left:50%;
+    left: 50%;
     top: 30%;
     transform: translateX(-50%) translateY(-30%);
     outline: 1px solid black;
@@ -391,40 +397,44 @@ h5 {
     box-shadow: 0px 0px 21px 5px rgba(0,0,0,0.3)
 }
 
-#CommonModal > .modal-header {
-    padding: 0;
-}
+    #CommonModal > .modal-header {
+        padding: 0;
+    }
 
-#CommonModal > .modal-content {
-    border: none;
-    margin-top: 10px;
-    height: 60%;
-    background-color:transparent;
-}
+    #CommonModal > .modal-content {
+        border: none;
+        margin-top: 10px;
+        height: 60%;
+        background-color: transparent;
+    }
 
-#CommonModal > .modal-actions {
-    float: right;
-    margin: 25px 5px 0px 0px;
-}
+    #CommonModal > .modal-actions {
+        float: right;
+        margin: 25px 5px 0px 0px;
+    }
 
-.btn-wide{
+    .float-right{
+        float:right;
+    }
+
+.btn-wide {
     min-width: 80px;
 }
 
-#darkWrapper{
+#darkWrapper {
     opacity: 0.5;
     background-color: black;
-    width:100%;
-    height:100%;
-    position:absolute;
-    top:0;
-    left:0;
-    z-index:1;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
     opacity: 0;
     transition: opacity 0.3s;
 }
 
-.text-input{
+.text-input {
     background-color: var(--white-color);
     outline: none;
     border: 1px solid var(--light-dark-color);

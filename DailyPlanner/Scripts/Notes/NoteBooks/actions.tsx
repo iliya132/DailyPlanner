@@ -6,6 +6,7 @@ export function NewNotebookAction(name: string):INotebook{
         createdAt: new Date().toLocaleDateString(),
         id: Guid.newGuid().toString(),
         title: name,
+        color: "red",
         records: []
     }
 }

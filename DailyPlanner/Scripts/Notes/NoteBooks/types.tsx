@@ -2,6 +2,7 @@
     id: string;
     title: string;
     createdAt: string;
+    color: string;
     records: IRecord[];
 }
 

@@ -1,24 +1,22 @@
-﻿import React from 'react';
-import { Notebook } from './Notebook';
-import * as reactRedux from 'react-redux';
-import { addNewNote, addNote, getNotebooks, getSelectedNote, getSelectedNotebook, selectNotebook } from '../reducer';
-import { notebooksSelector, useAppDispatch } from '../hooks';
-import { NewNoteAction, NewNotebookAction } from '../actions';
-import { IRecord } from '../types';
-import * as core from '../../../Core/PlannerCore';
+﻿import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import React from 'react';
+import * as core from '../../../Core/PlannerCore';
+import { NewNoteAction } from '../actions';
+import { notebooksSelector, useAppDispatch } from '../hooks';
+import { addNote, getNotebooks, getSelectedNote, getSelectedNotebook, removeNote, saveNoteBody } from '../reducer';
 import { Note } from './Note';
+import { Notebook } from './Notebook';
 
 export function NotebooksList() {
     const notebooks = notebooksSelector(getNotebooks);
     const selectedNotebook = notebooksSelector(getSelectedNotebook);
     const selectedNote = notebooksSelector(getSelectedNote);
     const dispatch = useAppDispatch();
-    let currentText:string = '';
+    let currentText: string = '';
     const handleAddNoteClick = () => {
         core.default.modal.askForTextInput("Название заметки", "Укажите название:", (input) => {
-            dispatch(addNote(NewNoteAction(input, currentText)));
+            dispatch(addNote(NewNoteAction(input, "")));
             currentText = '';
         }, null);
     }
@@ -43,13 +41,9 @@ export function NotebooksList() {
                 <div id="notes-root">
                     <div className="notes-wrapper">
                         {selectedNotebook.records.map(i => {
-                            return (
-                                <Note record={i} isSelected={i.id === selectedNote.id} />
-                            );
+                            return (<Note record={i} isSelected={i.id === selectedNote.id} key={i.id} />);
                         })
                         }
-                        
-
                         <div className="note note-new" onClick={handleAddNoteClick}>
                             <h3>Создать новую заметку</h3>
                         </div>
@@ -59,11 +53,7 @@ export function NotebooksList() {
             <div className="notes-editor">
                 <div className="editor-actions">
                     <div className="actions">
-
-                        <div className="button-group">
-                            <button type="button" title="Сохранить"><i className="icon journal"></i></button>
-                            <button type="button" title="Удалить"><i className="icon trash"></i></button>
-                        </div>
+                            <button className="btn btn-primary" title="Удалить" onClick={()=>dispatch(removeNote(selectedNote))}><i className="icon trash"></i></button>
                     </div>
                 </div>
                 <div className="editor-textarea">
@@ -73,7 +63,9 @@ export function NotebooksList() {
                         onChange={(event, editor) => {
                             currentText = editor.getData();
                         }}
+                        disabled={selectedNote ? false : true}
                     />
+                    <button className="btn btn-primary float-right" disabled={selectedNote ? false : true} type="button" onClick={() => dispatch(saveNoteBody(currentText))}>Сохранить</button>
                 </div>
             </div>
         </div>

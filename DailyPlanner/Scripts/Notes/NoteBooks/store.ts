@@ -10,8 +10,6 @@ export const store = configureStore({
     middleware: [thunk]
 })
 
-store.subscribe(() => console.log(store.getState()));
-
 let initialNotebook = NewNotebookAction("Мои заметки");
 let initialNotebook2 = NewNotebookAction("Мои заметки2");
 store.dispatch(notebooksReducer.addNotebook(initialNotebook));

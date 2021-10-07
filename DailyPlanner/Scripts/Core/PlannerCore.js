@@ -8,6 +8,7 @@ var modules = {
         },
         askForTextInput: function (header, question, callback, cancelCallback) {
             showCommonModal(header, "<label>" + question + "</label><input id=\"modalInput\" class=\"text-input\" type=\"text\"/>", function () { return handleInputCallback(callback); }, cancelCallback, true, true);
+            $('#modalInput').focus();
         },
         hideModal: function () {
             hideModalWindow();
@@ -20,7 +21,6 @@ function showCommonModal(header, body, onAccept, onCancel, showDefaultBtn, showC
     if (onCancel === void 0) { onCancel = null; }
     if (showDefaultBtn === void 0) { showDefaultBtn = true; }
     if (showCancelBtn === void 0) { showCancelBtn = false; }
-    console.log('modal!');
     $('#modalHeader').html(header);
     $('#modalContent').html(body);
     if (showDefaultBtn) {
