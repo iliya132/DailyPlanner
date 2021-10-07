@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noEmitOnError": false,
+    "noEmit": false,
+    "removeComments": false,
+    "alwaysStrict": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "lib": [
+      "DOM",
+      "ES5",
+      "ES2015",
+      "ES2017",
+      "ES2015.promise"
+    ],
+    "target": "es2017",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "jsx": "react"
+  },
+  "exclude": [
+    "bin",
+    "node_modules",
+    "**/src/*/*"
+  ]
+}

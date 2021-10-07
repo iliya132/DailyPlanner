@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DailyPlanner</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/icons.css" />
+    <link rel="stylesheet" href="~/dist/imports/CLEditor/jquery.cleditor.css" />
+    <script src="~/dist/imports/jquery-3.6.0.js"></script>
+    <script src="~/dist/ckeditor/ckeditor.js"></script>
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">DailyPlanner</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Notes">Заметки</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+        <main role="main" class="pb-3">
+
+            @RenderBody()
+            
+            <div id="darkWrapper" style="display:none;" onclick="plannerCore.hideModal()"></div>
+            <div id="CommonModal" style="display:none">
+                <div class="modal-header">
+                    <h5 id="modalHeader">Заголовок модального окна</h5>
+                    <hr />
+                </div>
+                <div id="modalContent" class="modal-content">
+                </div>
+                <div class="modal-actions">
+                    <button id="modalDefaultBtn" class="btn btn-primary btn-wide">ОК</button>
+                    <button id="modalExitBtn" class="btn btn-light btn-wide">ОТМЕНА</button>
+                </div>
+            </div>
+        </main>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/dist/plannerCore.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

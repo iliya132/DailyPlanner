@@ -1,0 +1,97 @@
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+}
+
+.icon.journal {
+    content: url('Icons/journal.svg');
+}
+
+.icon.journal-white {
+    content: url('Icons/journal white.svg');
+}
+
+.icon.trash {
+    content: url('Icons/trash.svg');
+}
+
+.icon.bar-chart {
+    content: url('Icons/bar_chart.svg');
+}
+
+.icon.card-checklist {
+    content: url('Icons/card_checklist.svg');
+}
+
+.icon.double-right {
+    content: url('Icons/doubleRight.svg');
+}
+
+.icon.gear {
+    content: url('Icons/gear.svg');
+}
+
+.icon.home {
+    content: url('Icons/home.svg');
+}
+
+.icon.lightning {
+    content: url('Icons/lightning.svg');
+}
+
+.icon.double-left {
+    content: url('Icons/doubleLeft.svg');
+}
+
+.icon.user {
+    content: url('Icons/user.svg');
+}
+
+.icon.search {
+    content: url('Icons/search.svg');
+}
+
+.icon.check-square {
+    content: url('Icons/checkSquare.svg');
+}
+
+.icon.pencil {
+    content: url('Icons/pencil.svg');
+}
+
+.icon.bookmark-star {
+    content: url('Icons/bookmarkStar.svg');
+}
+
+.icon.people {
+    content: url('Icons/people.svg');
+}
+
+.icon.tags {
+    content: url('Icons/tags.svg');
+}
+
+.icon.share {
+    content: url('Icons/share.svg');
+}
+
+.icon.paperclip {
+    content: url('Icons/paperclip.svg');
+}
+
+.icon.trash {
+    content: url('Icons/trash.svg');
+}
+
+.icon.plus {
+    content: url('Icons/plus.svg');
+}
+
+.icon.question {
+    content: url('Icons/question.svg');
+}
+
+.icon.save {
+    content: url('Icons/save.svg');
+}
