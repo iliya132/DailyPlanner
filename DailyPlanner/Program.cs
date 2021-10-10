@@ -25,10 +25,13 @@ builder.Services.AddDbContext<NotebooksDbContext>(options => options.UseSqlServe
 builder.Services.AddDbContext<UsersDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser<Guid>>(options => options.SignIn.RequireConfirmedAccount = false)
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<UsersDbContext>()
-    .AddUserManager<UserManager<IdentityUser<Guid>>>();
-builder.Services.AddRazorPages();
+    .AddUserManager<UserManager<IdentityUser>>();
+builder.Services.AddRazorPages(pages =>
+{
+    pages.Conventions.AuthorizePage("/Notes");
+});
 builder.Services.AddControllers();
 builder.Services.AddScoped<IDailyPlannerDataProvider, DailyPlannerDataProvider>();
 builder.Services.AddScoped<INotebooksDataProvider, NotebooksDataProvider>();

@@ -4,7 +4,7 @@ import React from 'react';
 import * as core from '../../../Core/PlannerCore';
 import { NewNoteAction } from '../actions';
 import { notebooksSelector, useAppDispatch } from '../hooks';
-import { addNote, getIsLoadingState, getNotebooks, getSelectedNote, getSelectedNotebook, removeNote, saveNoteBody } from '../reducer';
+import { addNote, addNoteThunk, getIsLoadingState, getNotebooks, getSelectedNote, getSelectedNotebook, removeNote, saveNoteBody, updateNoteThunk } from '../reducer';
 import { Note } from './Note';
 import { Notebook } from './Notebook';
 
@@ -17,13 +17,12 @@ export function NotebooksList() {
     let currentText: string = '';
     const handleAddNoteClick = () => {
         core.default.modal.askForTextInput("Название заметки", "Укажите название:", (input) => {
-            dispatch(addNote(NewNoteAction(input, "")));
+            addNoteThunk(NewNoteAction(input, ""));
             currentText = '';
         }, null);
     };
     const saveNote = () => {
-        dispatch(saveNoteBody(currentText));
-        core.default.popup.showSucess("Сохранение", "Изменения успешно сохранены!");
+        updateNoteThunk(selectedNote);
     }
     return (
         isLoading ? <div><img src="/loading.png" className="loader"/></div> :

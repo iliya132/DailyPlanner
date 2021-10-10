@@ -10,11 +10,11 @@ export function AddNotebook(note: INotebook) {
     })
 }
 
-export function RemoveNotebook(notebookId: Guid) {
+export function RemoveNotebook(notebookId: string) {
     return fetch(REMOVE_NOTEBOOK_URL, {
         method: "DELETE",
         headers: { "content-type": "appliaction/json" },
-        body: notebookId.toString()
+        body: notebookId
     })
 }
 
