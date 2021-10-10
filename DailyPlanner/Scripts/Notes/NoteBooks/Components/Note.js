@@ -5,6 +5,6 @@ export function Note(props) {
     var dispatch = useAppDispatch();
     return (React.createElement("div", { onClick: function () { return dispatch(selectNote(props.record)); }, className: "note" + (props.isSelected ? " active" : ""), key: props.record.id },
         React.createElement("h3", null, props.record.name),
-        React.createElement("p", null, props.record.created_at)));
+        React.createElement("p", null, props.record.createdAt)));
 }
 //# sourceMappingURL=Note.js.map

@@ -5,7 +5,7 @@ import { INotebook } from "../types";
 
 
 export function Notebook(props: INotebook) {
-    const title = props.title;
+    const title = props.name;
     const key = props.id;
     const cssStyle = { "backgroundColor": props.color } as React.CSSProperties;
     const dispatch = useAppDispatch();

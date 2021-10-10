@@ -8,13 +8,15 @@ import * as core from '../../Core/PlannerCore'
 interface notebooksState {
     notebooks: INotebook[],
     selectedNotebook: INotebook,
-    selectedNote: IRecord
+    selectedNote: IRecord,
+    isLoading:boolean
 };
 
 const initialState: notebooksState = {
     notebooks: [],
     selectedNotebook: null,
-    selectedNote: null
+    selectedNote: null,
+    isLoading: true
 };
 
 export const reducer = createSlice({
@@ -22,7 +24,7 @@ export const reducer = createSlice({
     initialState,
     reducers: {
         addNotebook: (state, action: PayloadAction<INotebook>) => {
-
+            console.log(action.payload);
             state.notebooks = [...state.notebooks, action.payload]
             if (state.notebooks.length === 1) {
                 state.selectedNotebook = state.notebooks[0];
@@ -58,14 +60,21 @@ export const reducer = createSlice({
             state.selectedNote.body = action.payload;
             state.selectedNotebook.records.find(i => i.id === state.selectedNote.id).body = action.payload;
             state.notebooks.find(i => i.id === state.selectedNotebook.id).records.find(i => i.id === state.selectedNote.id).body = action.payload;
+        },
+        startLoading: (state) => {
+            state.isLoading = true;
+        },
+        endLoading: (state) => {
+            state.isLoading = false;
         }
     }
 });
 
-export const { addNotebook, removeNotebook, selectNotebook, addNote, selectNote, saveNoteBody, removeNote } = reducer.actions;
+export const { addNotebook, removeNotebook, selectNotebook, addNote, selectNote, saveNoteBody, removeNote, startLoading, endLoading } = reducer.actions;
 export default reducer.reducer;
 export const getNotebooks = (State: RootState) => State.notebooksReducer.notebooks;
 export const getSelectedNotebook = (State: RootState) => State.notebooksReducer.selectedNotebook;
+export const getIsLoadingState = (state: RootState) => state.notebooksReducer.isLoading;
 export const getSelectedNote = (State: RootState) => State.notebooksReducer.selectedNote;
 export const addNewNote = (note: IRecord) => {
         store.dispatch(reducer.actions.addNote(note));

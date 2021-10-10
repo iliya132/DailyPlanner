@@ -2,3 +2,9 @@
 export const REMOVE_NOTEBOOK: string = "REMOVE_NOTEBOOK";
 export const SELECT_NOTEBOOK: string = "SELECT_NOTEBOOK";
 export const SET_STATE: string = "SET_STATE";
+export const CONTROLLER_URL: string = "Notebooks";
+export const ADD_NOTEBOOK_URL: string = "Notebooks/AddNotebook";
+export const REMOVE_NOTEBOOK_URL: string = "Notebooks/RemoveNotebook";
+export const ADD_NOTE_URL: string = "Notebooks/AddNote";
+export const UPDATE_NOTE_URL: string = "Notebooks/UpdateNote";
+export const REMOVE_NOTE_URL: string = "Notebooks/RemoveNote";

@@ -1,0 +1,121 @@
+:root {
+    --sucess-header-color: rgba(212, 237, 218, .85);
+    --success-content-color: rgba(230, 245, 233, .85);
+    --sucess-text-color: #155724;
+    --warning-header-color: rgba(255, 243, 205, .85);
+    --warning-content-color: rgba(255, 249, 231, .85);
+    --warning-text-color: #856404;
+    --error-header-color: rgba(248, 215, 218, .85);
+    --error-content-color: rgba(252, 237, 238, .85);
+    --error-text-color: #721c24;
+}
+
+.popupWrapper {
+    position: absolute;
+    border: 1px solid lightgray;
+    box-shadow: 0px 0px 23px -7px rgba(34, 60, 80, 0.2);
+    min-width: 300px;
+    min-height: 70px;
+    height: 70px;
+    bottom: 5px;
+    right: 5px;
+    border-radius: 5px;
+}
+
+.contentWrapper {
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
+    height: 100%;
+}
+
+.popupWrapper.sucess>.contentWrapper>.contentHeader {
+    background-color: var(--sucess-header-color);
+}
+
+.popupWrapper.sucess>.contentWrapper>.contentHeader>.headerText {
+    color: var(--sucess-text-color);
+}
+
+.popupWrapper.sucess>.contentWrapper>.content {
+    background-color: var(--success-content-color);
+    color: var(--sucess-text-color);
+}
+
+.popupWrapper.warning>.contentWrapper>.contentHeader {
+    background-color: var(--warning-header-color);
+}
+
+.popupWrapper.warning>.contentWrapper>.contentHeader>.headerText {
+    color: var(--warning-text-color);
+}
+
+.popupWrapper.warning>.contentWrapper>.content {
+    background-color: var(--warning-content-color);
+    color: var(--warning-text-color);
+}
+
+.popupWrapper.error>.contentWrapper>.contentHeader {
+    background-color: var(--error-header-color);
+}
+
+.popupWrapper.error>.contentWrapper>.contentHeader>.headerText {
+    color: var(--error-text-color);
+}
+
+.popupWrapper.error>.contentWrapper>.content {
+    background-color: var(--error-content-color);
+    color: var(--error-text-color);
+}
+
+.content {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    width: 100%;
+    height: 100%;
+}
+
+.body {
+    line-height: 32px;
+    margin: auto 5px auto 5px;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.iconHolder {
+    vertical-align: middle;
+    margin: auto auto;
+}
+
+.contentHeader {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    min-height: 15px;
+    font-size: 16px;
+    line-height: 16px;
+    display: grid;
+    background-color: whitesmoke;
+    grid-template-columns: 1fr 30px;
+}
+
+.headerText {
+    margin: auto 5px;
+    font-weight: bold;
+}
+
+.closeBtn {
+    margin: auto auto;
+    width: 30px;
+    height: 30px;
+}
+
+.closeBtn>button {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.closeBtn>button:hover {
+    color: gray;
+}

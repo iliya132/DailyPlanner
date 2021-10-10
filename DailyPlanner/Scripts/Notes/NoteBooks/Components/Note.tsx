@@ -13,7 +13,7 @@ export function Note(props: INoteElementProps) {
     return (
         <div onClick={() => dispatch(selectNote(props.record))} className={`note${props.isSelected ? " active" : ""}`} key={props.record.id}>
             <h3>{props.record.name}</h3>
-            <p>{props.record.created_at}</p>
+            <p>{props.record.createdAt}</p>
         </div>
     );
 }

@@ -3,14 +3,15 @@ export function NewNotebookAction(name) {
     return {
         createdAt: new Date().toLocaleDateString(),
         id: Guid.newGuid().toString(),
-        title: name,
+        name: name,
+        color: "red",
         records: []
     };
 }
 export function NewNoteAction(name, body) {
     return {
         body: body,
-        created_at: new Date().toLocaleDateString(),
+        createdAt: new Date().toLocaleDateString(),
         id: Guid.newGuid().toString(),
         name: name
     };
